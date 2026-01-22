@@ -1,2 +1,2 @@
-# Android-Application-Developing-CTK47C
-Neuro-GameSense: AI-Powered Thermal Predictor &amp; Performance Guardian
+# Neuro-GameSense: AI-Powered Thermal Predictor &amp; Performance Guardian
+Neuro-GameSense is an advanced, non-intrusive Android performance assistant that leverages on-device Artificial Intelligence to predict thermal spikes and optimize mobile gaming experiences. Unlike traditional "Game Boosters" that rely on static rules, Neuro-GameSense "senses" the game state through audio context and hardware telemetry to intervene before performance degradation occurs1.
