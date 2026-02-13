@@ -11,7 +11,7 @@ import java.util.Locale;
 
 public class DataLogger {
     private File logFile;
-    private Context context;
+    private final Context context;
 
     public DataLogger(Context context) {
         this.context = context;
