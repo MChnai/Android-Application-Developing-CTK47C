@@ -1,7 +1,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-file_path = 'training_data2.csv'
+
+file_path = 'training_data4.csv'
 
 try:
     data = pd.read_csv(file_path)
@@ -42,3 +43,4 @@ except FileNotFoundError:
     print(f"Lỗi: Không tìm thấy file '{file_path}'")
 except Exception as e:
     print(f"Có lỗi xảy ra: {e}")
+

@@ -4,8 +4,9 @@ from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score
 import matplotlib.pyplot as plt
+import m2cgen as m2c
 
-file_path = 'training_data2.csv'
+file_path = r'G:\STUDY\PTUDDD\Neuro_Gamesense1\traning data\training_data4.csv'
 data = pd.read_csv(file_path)
 
 #commmand to know if the phone is rest or not
@@ -56,3 +57,9 @@ plt.plot(predictions[:150], label='AI Dự đoán', color='red', linestyle='--')
 plt.legend()
 plt.title(f'AI Advanced Model (Accuracy: {accuracy*100:.1f}%)')
 plt.show()
+
+code = m2c.export_to_java(model)
+
+with open("ThermalPredictor.java", "w") as f:
+    f.write(code)
+print("Đã tạo file ThermalPredictor.java!")
