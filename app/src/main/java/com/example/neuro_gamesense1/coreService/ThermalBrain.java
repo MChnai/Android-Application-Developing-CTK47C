@@ -16,9 +16,16 @@ public class ThermalBrain {
         return currentSum / 30.0f;
     }
 
-    public double getAiPrediction(float temp, float smoothCurrent) {
-        double[] input = { (double) temp, (double) smoothCurrent, (double) (temp * smoothCurrent), (double) (temp * temp) };
-        return ThermalPredictor.score(input); // Uses your existing predictor
+    public float getAiPrediction(float temp, float smoothCurrent, float tempSlope, int audioState) {
+        return (float) ThermalPredictor.score(temp, smoothCurrent, tempSlope, audioState);
+    }
+
+    public String getTimeToOverheat(float currentTemp, double predictedTemp) {
+        float delta = (float) predictedTemp - currentTemp;
+
+        if (predictedTemp > 45.0f) return "CRITICAL: AI predicts overheat in < 60s!";
+        if (delta > 2.0f) return "Warning: Rapid heating detected.";
+        return "System Stable";
     }
 
     public String getThermalAdvice(float currentTemp, double predictedTemp) {

@@ -6,15 +6,29 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.BatteryManager;
 import android.os.Build;
+import android.os.Handler;
 import android.os.SystemClock;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.InputStreamReader;
+
 import android.os.Process;
 
 public class SystemMonitor {
     private final Context context;
     private final BatteryManager batteryManager;
+
+    private static int getMaliGpuUsage() {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("/sys/class/misc/mali0/device/utilisation"));
+            String line = reader.readLine();
+            reader.close();
+            return Integer.parseInt(line.trim());
+        } catch (Exception e) {
+            return 0;
+        }
+    }
 
     public SystemMonitor(Context context) {
         this.context = context;
@@ -39,6 +53,7 @@ public class SystemMonitor {
             long totalMemory = memoryInfo.totalMem / (1024 * 1024);
             long usedMem = totalMemory - availableMemory;
             int percent = (int) ((usedMem * 100) / totalMemory);
+
             return percent + "% (" + availableMemory + " MB free)";
         }
         return "N/A";
@@ -67,10 +82,8 @@ public class SystemMonitor {
 
             long currentCpuTime = Process.getElapsedCpuTime();
             long currentTime = SystemClock.elapsedRealtime();
-
             long cpuDiff = currentCpuTime - lastCpuTime;
             long timeDiff = currentTime - lastTime;
-
             int numCores = Runtime.getRuntime().availableProcessors();
             int cpuPercent = (int) ((cpuDiff * 100.0) / (timeDiff * numCores));
 
@@ -104,14 +117,53 @@ public class SystemMonitor {
         return 0;
     }
 
-    private static int getMaliGpuUsage() {
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader("/sys/class/misc/mali0/device/utilisation"));
-            String line = reader.readLine();
-            reader.close();
-            return Integer.parseInt(line.trim());
-        } catch (Exception e) {
-            return 0;
+    public int getBatteryCurrent(){
+        BatteryManager batteryManager = (BatteryManager) context.getSystemService(Context.BATTERY_SERVICE);
+        if(batteryManager != null) {
+            int currentMicro = batteryManager.getIntProperty(BatteryManager.BATTERY_PROPERTY_CURRENT_NOW);
+            return currentMicro / 1000;
         }
+        return 0;
     }
+    public interface StatsCallback {
+        void onUpdate(int cpu, int gpu, int battery);
+    }
+    public int getPing() {
+        try {
+            java.lang.Process process = Runtime.getRuntime().exec("/system/bin/ping -c 1 -w 2 8.8.8.8");
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.contains("time=")) {
+                    int startIndex = line.indexOf("time=") + 5;
+                    int endIndex = line.indexOf(" ms", startIndex);
+
+                    if (startIndex != -1 && endIndex != -1) {
+                        String timeVal = line.substring(startIndex, endIndex);
+                        return Math.round(Float.parseFloat(timeVal));
+                    }
+                }
+            }
+            process.waitFor(); 
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+    public void startAutoUpdate(Handler handler, StatsCallback callback) {
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                int cpu = getCpuUsage();
+                int gpu = getGpuUsage();
+                int battery = getBatteryPercent();
+
+                callback.onUpdate(cpu, gpu, battery);
+                handler.postDelayed(this, 2000);
+            }
+        });
+    }
+
 }

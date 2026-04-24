@@ -33,7 +33,6 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder
     @Override
     public void onBindViewHolder(@NonNull GameViewHolder holder, int position) {
         AppModel game = games.get(position);
-        holder.gameName.setText(game.getName());
         holder.gameIcon.setImageDrawable(game.getIcon());
 
         holder.itemView.setOnClickListener(v -> {
@@ -53,8 +52,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder
         public GameViewHolder(@NonNull View itemView) {
             super(itemView);
             gameIcon = itemView.findViewById(R.id.imgGameIcon);
-            gameName = itemView.findViewById(R.id.txtGameName);
-
+            gameName = itemView.findViewById(R.id.AppName);
         }
     }
 }

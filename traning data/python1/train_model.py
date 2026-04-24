@@ -6,7 +6,7 @@ from sklearn.metrics import r2_score
 import matplotlib.pyplot as plt
 import m2cgen as m2c
 
-file_path = r'G:\STUDY\PTUDDD\Neuro_Gamesense1\traning data\training_data4.csv'
+file_path = r'G:\STUDY\MobileAppDev\Neuro_Gamesense1\traning data\training_data7.csv'
 data = pd.read_csv(file_path)
 
 #commmand to know if the phone is rest or not

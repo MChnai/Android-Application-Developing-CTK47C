@@ -2,9 +2,11 @@ package com.example.neuro_gamesense1.coreApplications;
 
 import android.graphics.drawable.Drawable;
 
-public class AppModel {
+import java.io.Serializable;
+
+public class AppModel implements Serializable {
     private final String name;
-    private final Drawable icon;
+    private transient final Drawable icon;
     private final String packageName;
     public AppModel(String name, Drawable icon, String packageName) {
         this.name = name;

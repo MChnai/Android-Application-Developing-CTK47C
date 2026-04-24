@@ -6,16 +6,14 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:gravity="center_vertical"
-    android:padding="8dp"
     tools:ignore="UseCompoundDrawables">
 
     <ImageView
         android:id="@+id/statIcon"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:importantForAccessibility="no"
-        android:src="@drawable/ic_cpu_chip"
-        app:tint="@color/neuro_blue"
+        android:src="@drawable/ic_stat_cpu"
         tools:ignore="ImageContrastCheck" />
 
     <TextView
@@ -25,7 +23,7 @@
         android:layout_marginStart="6dp"
         android:fontFamily="monospace"
         android:text="-- %"
-        android:textColor="@android:color/white"
+        android:textColor="@color/dark_blue"
         android:textSize="12sp"
         tools:ignore="HardcodedText,TextContrastCheck" />
 </LinearLayout>

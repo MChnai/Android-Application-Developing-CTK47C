@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Neuro_Gamesense</string>
+    <string name="accessibility_desc">
+Allow Neuro GameSense to automatically detect when you open a game to enable AI caching.</string>
 </resources>
