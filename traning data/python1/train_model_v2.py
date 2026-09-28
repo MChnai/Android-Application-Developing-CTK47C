@@ -60,5 +60,6 @@ onnx_model = convert_sklearn(model, initial_types=initial_type)
 # Lưu thành file
 with open("thermal_rf_model.onnx", "wb") as f:
     f.write(onnx_model.SerializeToString())
+    
 
 print("🎉 Đã xuất thành công file: thermal_rf_model.onnx")

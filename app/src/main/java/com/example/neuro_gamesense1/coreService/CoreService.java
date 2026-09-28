@@ -91,7 +91,7 @@ public class CoreService extends Service {
     private void triggerActionModeAlert(float temp, double predictedTemp) {
         String msg = "Warning: " + thermalBrain.getTimeToOverheat(temp, predictedTemp) +
                 ", system will automatically reduce light and sound!";
-        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
 
         Intent vpnIntent = new Intent(this, NeuroVpnService.class);
         vpnIntent.putExtra("GAME_PACKAGE_NAME", "com.example.neurogamesense");

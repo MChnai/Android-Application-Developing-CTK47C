@@ -219,7 +219,7 @@ public class OverlayManager {
                     "Released: " + releasedMB + " MB (" + finalAppsCount + " apps)" :
                     "System Optimized: " + finalAppsCount + " bg_app_main apps";
 
-            Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
         }, 1500);
     }
     private List<String> getInstalledApps(Context context) {

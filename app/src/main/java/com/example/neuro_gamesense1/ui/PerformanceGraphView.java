@@ -19,7 +19,6 @@ import java.util.List;
 
 public class PerformanceGraphView extends View {
     private Paint linePaint, predictPaint;
-    private final Path path = new Path();
     private final int MAX_POINTS = 100;
     private final List<Float> dataPoints = new ArrayList<>();
     private final List<Float> predictPoints = new ArrayList<>();

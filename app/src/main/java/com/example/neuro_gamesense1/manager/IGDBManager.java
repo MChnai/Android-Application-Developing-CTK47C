@@ -21,7 +21,7 @@ import okhttp3.Response;
 
 public class IGDBManager {
     private static final String CLIENT_ID = "gsnjj4l44u6y5akvi6mi6b53qowvgy";
-    private static final String CLIENT_SECRET = "59ljl7ok9bcwmu0g3k9rtjtr6fj7gd";
+    private static final String CLIENT_SECRET = "okijejbtxqttm2xzqine968bkmgg4j";
     private static String currentAccessToken = null;
 
     private interface TokenListener {
