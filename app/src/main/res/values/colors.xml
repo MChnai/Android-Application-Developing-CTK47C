@@ -3,18 +3,14 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="white_40">#66FFFFFF</color>
     <color name="white_blue">#38BDF8</color>
-    <color name="neuro_blue">#38BDF8</color>
-    <color name="neuro_blue_dark">#CC0F172A</color>
-    <color name="background_dark">#0F172A</color>
-    <color name="card_bg_dark">#1E293B</color>
 
     <color name="status_red">#F87171</color>
     <color name="status_green">#4ADE80</color>
     <color name="status_orange">#FB923C</color>
 
-    <color name="overlay_glass">#B3000000</color>
-    <color name="text_secondary">#94A3B8</color>
-    <color name="button_secondary">#475569</color>
+    <color name="dark_blue">#202833</color>
+    <color name="light_blue">#D6DDE7</color>
+    <color name="light_grey">#8D95A2</color>
+    <color name="blue">#47A2F1</color>
 </resources>

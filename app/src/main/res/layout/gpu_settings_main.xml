@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:paddingBottom="30dp"
+        android:background="@drawable/img_dashboard_stats">
+        <LinearLayout
+            android:id="@+id/settings_panel"
+            android:layout_width="350dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_common_border"
+            android:paddingRight="30dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:text="GPU SETTINGS"
+                android:gravity="center"
+                android:textSize="25dp"
+                android:paddingBottom="10dp"
+                android:textColor="@color/dark_blue"
+                android:background="@drawable/bg_gpu_header"
+                android:fontFamily="@font/menlo_bold"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="top|center_horizontal"
+                android:paddingBottom="20dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnDefault"
+                    style="@style/GameModeItem"
+                    android:text="Default" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnSavePower"
+                    style="@style/GameModeItem"
+                    android:text="Save power" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnBalance"
+                    style="@style/GameModeItem"
+                    android:text="Balanced" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnHighQuality"
+                    style="@style/GameModeItem"
+                    android:text="High quality" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnCustom"
+                    style="@style/GameModeItem"
+                    android:text="Custom" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/appName"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:fontFamily="@font/futura_bold"
+                android:text="Application's Name"
+                android:gravity="center"
+                android:paddingBottom="30dp"
+                android:textColor="@color/dark_blue"
+                android:textSize="30dp"
+                android:background="@drawable/bg_dashboard_label"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="0dp">
+                <com.github.mikephil.charting.charts.RadarChart
+                    android:id="@+id/radarChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="-30dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

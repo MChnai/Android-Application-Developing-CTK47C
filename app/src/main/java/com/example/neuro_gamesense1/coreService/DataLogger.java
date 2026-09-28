@@ -25,7 +25,7 @@ public class DataLogger {
         try {
             if (!logFile.exists()) {
                 FileWriter writer = new FileWriter(logFile, true);
-                writer.append("Timestamp,Temperature_C,Current_mA,RAM_Free_MB\n");
+                writer.append("Timestamp,Temperature_C,Current_mA,RAM_Free_MB,Audio_State\n");
                 writer.flush();
                 writer.close();
             }
@@ -34,12 +34,12 @@ public class DataLogger {
         }
     }
 
-    public void logData(float temp, int currentmA, String ramString) {
+    public void logData(float temp, int currentmA, String ramString, int audioState) {
         try {
             FileWriter writer = new FileWriter(logFile, true);
             String timeStamp = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
             String cleanRam = ramString.replace(" MB Free", "").trim();
-            String dataRow = timeStamp + "," + temp + "," + currentmA + "," + cleanRam + "\n";
+            String dataRow = timeStamp + "," + temp + "," + currentmA + "," + cleanRam + "," + audioState + "\n";
 
             writer.append(dataRow);
             writer.flush();

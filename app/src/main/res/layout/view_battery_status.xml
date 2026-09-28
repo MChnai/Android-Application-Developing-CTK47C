@@ -5,14 +5,13 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:gravity="center_vertical"
-    android:padding="8dp"
     tools:ignore="UseCompoundDrawables">
 
     <ImageView
         android:id="@+id/battery_bar"
-        android:layout_width="32dp"
-        android:layout_height="16dp"
-        android:src="@drawable/battery_progress"
+        android:layout_width="42dp"
+        android:layout_height="26dp"
+        android:src="@drawable/progress_battery_level"
         tools:ignore="ContentDescription,ImageContrastCheck" />
 
     <TextView
@@ -21,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="90%"
-        android:textColor="@android:color/white"
+        android:textColor="@color/dark_blue"
         android:textSize="12sp"
         android:textStyle="bold"
         tools:ignore="HardcodedText,TextContrastCheck" />

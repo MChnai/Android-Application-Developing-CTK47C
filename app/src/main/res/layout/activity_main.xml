@@ -1,115 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextureView
-        android:id="@+id/backgroundVideo"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
-
-        <include
-            android:id="@+id/batteryStatusInclude"
-            layout="@layout/view_battery_status" />
-
-        <include
-            android:id="@+id/cpuChip"
-            layout="@layout/view_stat_chip" />
-
-        <include
-            android:id="@+id/gpuChip"
-            layout="@layout/view_stat_chip" />
-
-    </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
-
-
+        android:orientation="vertical"
+        android:background="@drawable/bg_app_main">
         <LinearLayout
-            android:id="@+id/sidebar"
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
-            android:orientation="vertical"
-            android:gravity="center_horizontal">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:gravity="center"
-                android:text="NEURO\nGAMESENSE"
-                android:textColor="@color/white"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                tools:ignore="HardcodedText,TextContrastCheck" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/listGame"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
-                android:clipToPadding="false" />
-        </LinearLayout>
-
-        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="30dp"
-            android:layout_toEndOf="@id/sidebar"
-            app:cardBackgroundColor="@color/neuro_blue_dark"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="0dp">
+            android:paddingStart="30sp"
+            android:paddingEnd="60sp"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/turnOnOffAccessibility"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NEURO\nGAMESENSE"
+                android:textSize="25sp"
+                android:fontFamily="@font/futura_bold"
+                android:gravity="center"
+                android:textColor="@color/dark_blue"
+                android:layout_marginTop="15sp"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listGame"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="50sp"
+                android:paddingEnd="0sp"
+                android:layout_marginStart="70sp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:orientation="vertical"
-                android:padding="20dp">
-
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_common_border"
+                android:paddingTop="20dp"
+                android:paddingStart="60sp"
+                android:paddingEnd="60sp"
+                android:paddingHorizontal="25dp"
+                android:orientation="vertical">
                 <TextView
-                    android:id="@+id/txtDetailTitle"
+                    android:id="@+id/AppName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Game's name"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:layout_marginBottom="10dp"
-                    tools:ignore="HardcodedText" />
+                    android:fontFamily="@font/menlo_bold"
+                    android:text="Application's Name"
+                    android:layout_gravity="center"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="30sp"
+                    android:maxLines="1"
+                    android:ellipsize="end"/>
 
-                <ImageView
-                    android:id="@+id/imgGameBanner"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_launcher_background"
-                    tools:ignore="ContentDescription,ImageContrastCheck" />
-
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnStartGame"
+                    style="@style/GameModeItem"
+                    android:text="START NOW" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnGPUSetUp"
+                    style="@style/GameModeItem"
+                    android:text="GPU SETTINGS" />
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="20dp"
-                    android:backgroundTint="@color/neuro_blue"
-                    android:text="START GAME"
-                    tools:ignore="HardcodedText,TextContrastCheck,VisualLintButtonSize,VisualLintBounds" />
+                    android:layout_height="60sp"
+                    android:orientation="horizontal"
+                    android:padding="10sp"
+                    android:background="@drawable/btn_default_bg">
+                    <Button
+                        android:id="@+id/btnAddApps"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="8dp"
+                        android:text="ADD APPS"
+                        android:textColor="@color/light_blue"
+                        android:background="@drawable/btn_secondary_small"/>
+                    <Button
+                        android:id="@+id/btnSetting"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:text="SETTING"
+                        android:textColor="@color/light_blue"
+                        android:background="@drawable/btn_secondary_small"/>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="20dp"
+                    android:paddingEnd="60dp">
+
+                    <include
+                        android:id="@+id/batteryStatusInclude"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.2"
+                        layout="@layout/view_battery_status" />
+
+                    <include
+                        android:id="@+id/Chip"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        layout="@layout/view_stat_chip" />
+
+                    <include
+                        android:id="@+id/gpuChip"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        layout="@layout/view_stat_chip" />
+                </LinearLayout>
             </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.2"
+                android:orientation="vertical"
+                android:paddingRight="60dp">
 
-    </RelativeLayout>
-</FrameLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/frame_default"
+                    android:padding="30dp">
+
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/bannerViewPager"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@color/dark_blue"
+                        app:layout_constraintDimensionRatio="16:9"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintWidth_percent="0.8"
+                        app:layout_constraintHeight_percent="0.50" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/bannerIndicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="3dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@android:color/transparent"
+                    app:tabBackground="@drawable/sl_banner_dots"
+                    app:tabIndicatorHeight="0dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
